@@ -16,5 +16,6 @@ variable "common_tags" {
   type        = map(any)
   default = {
     Owner = "Edgar"
+    Name  = "default"
   }
 }

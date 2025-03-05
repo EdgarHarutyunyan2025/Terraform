@@ -20,6 +20,12 @@ resource "aws_security_group" "web" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = var.common_tags
+  #  tags = var.common_tags
+  tags = merge(var.common_tags, { Name = "Server IP" })
 }
 
+resource "aws_instance" "Web" {
+  ami             = "amazon"
+  instance_type   = "t2.micro"
+  security_groups = aws_security_group.web
+}
